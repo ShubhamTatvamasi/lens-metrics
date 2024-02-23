@@ -10,6 +10,9 @@ metadata:
   name: prometheus
   namespace: lens-metrics
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   podManagementPolicy: OrderedReady
   replicas: 1
   revisionHistoryLimit: 10
