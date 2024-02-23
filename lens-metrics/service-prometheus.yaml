@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/created-by: resource-stack
+    app.kubernetes.io/managed-by: Lens
+    app.kubernetes.io/name: lens-metrics
+  name: prometheus
+  namespace: lens-metrics
+spec:
+  ports:
+    - name: web
+      port: 80
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    name: prometheus
+  sessionAffinity: None
+  type: ClusterIP

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/created-by: resource-stack
+    app.kubernetes.io/managed-by: Lens
+    app.kubernetes.io/name: lens-metrics
+  name: node-exporter
+  namespace: lens-metrics
+spec:
+  ports:
+    - name: metrics
+      port: 80
+      protocol: TCP
+      targetPort: 9100
+  selector:
+    name: node-exporter
+    phase: prod
+  sessionAffinity: None
+  type: ClusterIP

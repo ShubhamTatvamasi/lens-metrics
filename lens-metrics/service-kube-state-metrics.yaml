@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/created-by: resource-stack
+    app.kubernetes.io/managed-by: Lens
+    app.kubernetes.io/name: lens-metrics
+    name: kube-state-metrics
+  name: kube-state-metrics
+  namespace: lens-metrics
+spec:
+  ports:
+    - name: metrics
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    name: kube-state-metrics
+  sessionAffinity: None
+  type: ClusterIP
